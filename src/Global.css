@@ -1,0 +1,60 @@
+.App {
+    text-align: center;
+}
+
+.HeaderBar {
+    background-color: #282c34;
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 1em;
+
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    font-size: larger;
+}
+
+.Footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #282c34;
+    color: white;
+    text-align: center;
+}
+
+.Login-form {
+    /* Like this: 
+      Username
+      -------
+      Password
+      --------
+    */
+    scale: 1.5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.Header {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    padding: 1em;
+    margin-bottom: 2em;
+    background-color: rgb(192, 45, 26);
+    color: #fff;
+}
+
+.App-link {
+    color: #61dafb;
+}
