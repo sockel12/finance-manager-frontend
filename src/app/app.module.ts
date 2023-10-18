@@ -12,6 +12,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -41,7 +42,8 @@ const appRoutes: Routes = [
         HttpClientModule
     ],
     providers: [
-        AuthService
+        AuthService,
+        CookieService
     ],
     bootstrap: [AppComponent]
 })

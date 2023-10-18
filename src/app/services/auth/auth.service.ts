@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 
 
@@ -11,11 +12,18 @@ export class AuthService {
     private loggedIn: boolean;
     private user: User | null;
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private cookieService: CookieService) {
         this.loggedIn = false;
         this.user = null;
 
+        if (this.cookieService.get('token') !== '') {
+            this.loggedIn = true;
 
+            this.http.get('http://localhost:3000/me', { withCredentials: true })
+                .subscribe((res) => {
+                    this.user = res as User;
+                });
+        }
     }
 
     private setAuthStatus(status: boolean, user: User | null) {
