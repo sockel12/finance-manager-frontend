@@ -1,27 +1,28 @@
-<div class="header">
-    <header>
-        <h1>Hello Guest!</h1>
+<header class="header">
+    <div class="header-left">
+        <h1>Welcome, {{this.getUser()?.name || "Guest"}}!</h1>
         <nav class="header-nav">
-            <div class="header-sites">
-                <a routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a>
-                <a *ngIf="this.isLoggedIn()" routerLink="/profile" routerLinkActive="active"
-                    ariaCurrentWhenActive="page">Profile</a>
-            </div>
-            <div class="header-auth">
-                <a *ngIf="this.isLoggedIn()" (click)="this.logout()" routerLink="/" routerLinkActive="active"
-                    ariaCurrentWhenActive="page">Logout</a>
-                <a *ngIf="!this.isLoggedIn()" routerLink="/signup" routerLinkActive="active"
-                    ariaCurrentWhenActive="page">Signup</a>
-                <form (ngSubmit)="this.login()" class="header-login-form">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" [(ngModel)]="formData.username" required>
-
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" [(ngModel)]="formData.password" required>
-
-                    <button type="submit" [disabled]="">Submit</button>
-                </form>
-            </div>
+            <a routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a>
+            <a routerLink="/profile" routerLinkActive="active" ariaCurrentWhenActive="page"
+                *ngIf="this.isLoggedIn()">Profile</a>
         </nav>
-    </header>
-</div>
+    </div>
+    <div class="header-right">
+        <nav>
+            <form (ngSubmit)="this.login()" class="header-login-form" *ngIf="!this.isLoggedIn()">
+                <input type="text" id="username" name="username" placeholder="Username" [(ngModel)]="formData.username"
+                    required>
+
+                <input type="password" id="password" name="password" placeholder="Password"
+                    [(ngModel)]="formData.password" required>
+
+                <button type="submit">Login</button>
+            </form>
+            <a *ngIf="!this.isLoggedIn()" routerLink="/signup" routerLinkActive="active"
+                ariaCurrentWhenActive="page">Signup</a>
+            <a *ngIf="this.isLoggedIn()" (click)="this.logout()" routerLink="/" routerLinkActive="active"
+                ariaCurrentWhenActive="page">Logout</a>
+        </nav>
+    </div>
+
+</header>

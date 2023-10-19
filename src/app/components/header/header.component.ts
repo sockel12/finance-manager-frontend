@@ -21,6 +21,11 @@ export class HeaderComponent implements OnInit {
 
     }
 
+    public getUser(): User | null {
+        return this.authService.getUser();
+    }
+
+
     public isLoggedIn(): boolean {
         return this.authService.getAuthStatus();
     }
@@ -29,14 +34,23 @@ export class HeaderComponent implements OnInit {
         if (this.inputValid()) {
 
             this.authService.login(this.formData.username, this.formData.password).subscribe((res) => {
-                console.log('Test: ' + JSON.stringify(res));
+                if (res) {
+                    alert('Login succeeded');
+                } else {
+                    alert('Login failed');
+                }
             });
         }
-        alert('Login failed');
     }
 
     async logout() {
-        this.authService.logout();
+        this.authService.logout().subscribe((res) => {
+            if (res) {
+                alert('Logout succeeded');
+            } else {
+                alert('Logout failed');
+            }
+        });
     }
 
     private notNullOrEmpty(str: string): boolean {
