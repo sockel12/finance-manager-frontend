@@ -1,1 +1,14 @@
-<p>profile works!</p>
+<div class="profile" *ngIf="getUser() !== null">
+    <div class="user-stats">
+        <p class="name">{{getUser().name}}</p>
+        <p class="username">{{getUser().username}}</p>
+        <p class="budget">{{getUser().budget | ccurrency: "EUR"}}</p>
+
+        <div class="progress-bar">
+            <progress [value]="budgetLeft" min="0" [max]="getUser().budget" style="visibility:hidden;height:0;width:0;">
+            </progress>
+            {{(budgetLeft / getUser().budget) | percent}}
+        </div>
+
+    </div>
+</div>

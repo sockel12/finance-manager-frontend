@@ -13,12 +13,17 @@ import { HomeComponent } from './components/home/home.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
+import { BookingsComponent } from './components/bookings/bookings.component';
+import { CcurrencyPipe } from './ccurrency.pipe';
+import { CurrencyPipe } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'home', redirectTo: '/' },
     { path: 'profile', component: ProfileComponent },
     { path: 'signup', component: SignupComponent },
+    { path: 'bookings', component: BookingsComponent },
 
 ];
 
@@ -29,7 +34,9 @@ const appRoutes: Routes = [
         HeaderComponent,
         FooterComponent,
         SignupComponent,
-        HomeComponent
+        HomeComponent,
+        BookingsComponent,
+        CcurrencyPipe
     ],
     imports: [
         BrowserModule,
@@ -39,11 +46,13 @@ const appRoutes: Routes = [
             //{ enableTracing: true } // <-- debugging purposes only
         ),
         FormsModule,
-        HttpClientModule
+        HttpClientModule,
+        BrowserAnimationsModule
     ],
     providers: [
         AuthService,
-        CookieService
+        CookieService,
+        CurrencyPipe
     ],
     bootstrap: [AppComponent]
 })

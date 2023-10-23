@@ -1,10 +1,12 @@
 <header class="header">
     <div class="header-left">
-        <h1>Welcome, {{this.getUser()?.name || "Guest"}}!</h1>
+        <h1>Welcome, {{ getUser()?.name ?? "Guest"}}!</h1>
         <nav class="header-nav">
             <a routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a>
             <a routerLink="/profile" routerLinkActive="active" ariaCurrentWhenActive="page"
                 *ngIf="this.isLoggedIn()">Profile</a>
+            <a routerLink="/bookings" routerLinkActive="active" ariaCurrentWhenActive="page"
+                *ngIf="this.isLoggedIn()">Bookings</a>
         </nav>
     </div>
     <div class="header-right">

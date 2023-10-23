@@ -1,0 +1,7 @@
+<div class="booking-holder">
+    <div *ngFor="let booking of bookings" [ngClass]="'booking-' + booking.id">
+        {{booking.id}}
+        {{booking.description}}
+        {{booking.amount | ccurrency: "EUR"}}
+    </div>
+</div>
