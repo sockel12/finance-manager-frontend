@@ -1,7 +1,19 @@
-<div class="booking-holder">
-    <div *ngFor="let booking of bookings" [ngClass]="'booking-' + booking.id">
-        {{booking.id}}
-        {{booking.description}}
-        {{booking.amount | ccurrency: "EUR"}}
+<div class="bookings">
+    <div class="booking-holder">
+        <div class="booking-header">
+            <div>ID</div>
+            <div>Description</div>
+            <div>Price</div>
+            <div>Date</div>
+        </div>
+        <cdk-virtual-scroll-viewport [itemSize]="3">
+            <!-- Index for i instead of element -->
+            <div *cdkVirtualFor="let booking of bookings; let index = index" class="booking">
+                <div class="id">{{index}}</div>
+                <div class="desc">{{booking.description}}</div>
+                <div class="amount">{{booking.amount | ccurrency: "EUR"}}</div>
+                <div class="date">{{booking.date | date}}</div>
+            </div>
+        </cdk-virtual-scroll-viewport>
     </div>
 </div>

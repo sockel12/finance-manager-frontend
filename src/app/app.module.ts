@@ -17,13 +17,16 @@ import { BookingsComponent } from './components/bookings/bookings.component';
 import { CcurrencyPipe } from './ccurrency.pipe';
 import { CurrencyPipe } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { needAuthGuard, noAuthGuard } from './guards/auth.guard';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'home', redirectTo: '/' },
-    { path: 'profile', component: ProfileComponent },
-    { path: 'signup', component: SignupComponent },
-    { path: 'bookings', component: BookingsComponent },
+    { path: 'profile', component: ProfileComponent, canActivate: [needAuthGuard] },
+    { path: 'signup', component: SignupComponent, canActivate: [noAuthGuard] },
+    { path: 'bookings', component: BookingsComponent, canActivate: [needAuthGuard] },
 
 ];
 
@@ -47,7 +50,8 @@ const appRoutes: Routes = [
         ),
         FormsModule,
         HttpClientModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        ScrollingModule
     ],
     providers: [
         AuthService,

@@ -1,0 +1,21 @@
+.booking-header {
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px;
+    border: 1px solid black;
+    background: linear-gradient(to right, white, rgb(231, 231, 231));
+}
+
+.booking {
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background: linear-gradient(to right, white, rgb(231, 231, 231));
+}

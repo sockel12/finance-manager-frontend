@@ -6,3 +6,8 @@
 
     font-family: sans-serif;
 }
+
+html {
+    background-image: linear-gradient(to right, #8ecae6, #abd8ed);
+    color: black;
+}

@@ -1,14 +1,22 @@
 <div class="profile" *ngIf="getUser() !== null">
-    <div class="user-stats">
-        <p class="name">{{getUser().name}}</p>
-        <p class="username">{{getUser().username}}</p>
-        <p class="budget">{{getUser().budget | ccurrency: "EUR"}}</p>
+    <div class="card">
+        <label for="profile-name">Name</label>
+        <div id="profile-name" class="name">{{getUser().name}}</div>
 
-        <div class="progress-bar">
-            <progress [value]="budgetLeft" min="0" [max]="getUser().budget" style="visibility:hidden;height:0;width:0;">
-            </progress>
-            {{(budgetLeft / getUser().budget) | percent}}
+        <label for="profile-username">Username</label>
+        <div id="profile-username" class="username">{{getUser().username}}</div>
+
+        <label for="profile-budget">Budget</label>
+        <div id="profile-budget" class="budget">{{getUser().budget | ccurrency: "EUR"}}</div>
+
+        <label for="profile-budget-left">Budget Remaining</label>
+        <div id="profile-budget-left" class="progress-bar"
+            [style]="'background:' + getColor(budgetLeft / getUser().budget) +';'">
+            <progress [value]="budgetLeft" min="0" [max]="getUser().budget"></progress>
+            <div class="progress-text">{{ budgetLeft | ccurrency: "EUR"}} / {{getUser().budget | ccurrency: "EUR"}}
+            </div>
+
         </div>
-
     </div>
+
 </div>

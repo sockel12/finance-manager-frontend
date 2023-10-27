@@ -31,7 +31,17 @@ export class ProfileComponent implements OnInit {
 
 
     getUser(): User {
-        return this.authService.getUser() ?? { username: '', budget: 0, name: '' };
+        return this.authService.getUser() ?? { username: '', budget: 0, name: '', admin: false };
+    }
+
+    getColor(value: number): string {
+        if (value <= 0.33) {
+            return 'red';
+        }
+        if (value <= 0.66) {
+            return 'yellow';
+        }
+        return 'green';
     }
 
 
